@@ -7,12 +7,13 @@ public class Calculadora {
     public static void main(String[] args) {
         Vista.introducir(mod);
         mod.setResultado(Calculadora.realizaOperacion(mod.getNum1(), mod.getNum2(), mod.getOperacion()));
-        Vista.imprimir(mod);
+        Vista.imprimir(mod);  
     }
 
     public static float realizaOperacion(float n1, float n2, String op) {
-        op = mod.getOperacion();
-        float resul = 0;
+        
+        
+        float resul = 10;
         if ("sumar".equals(op)) {
             resul = (n1 + n2);
             mod.setResultado(resul);
