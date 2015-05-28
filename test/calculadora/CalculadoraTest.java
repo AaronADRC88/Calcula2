@@ -1,48 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
+import java.util.Arrays;
+import java.util.Collection;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-/**
- *
- * @author aferreiradominguez
- */
+@RunWith(Parameterized.class)
 public class CalculadoraTest {
-
-    public CalculadoraTest() {
+    
+    private Float n1;
+    private Float n2;
+    private String op;
+    private Float expResult;
+    private Calculadora calculadora;
+    
+    @Before
+    public void initialize() {
+        calculadora = new Calculadora();
     }
-
-    @BeforeClass
-    public static void setUpClass() {
+    
+    public CalculadoraTest(Float nu1, Float nu2, String ope, Float expResul) {
+        this.n1 = nu1;
+        this.n2 = nu2;
+        this.op = ope;
+        this.expResult = expResul;
     }
-
-    @AfterClass
-    public static void tearDownClass() {
+    
+    @Parameterized.Parameters
+    public static Collection calculando() {
+        return Arrays.asList(new Object[][]{
+            {1.0f, 1.0f, "sumar", 2.0f},
+            {1.0f, 2.0f, "sumar", 3.0f},
+            {2.0f,1.0f,"restar",1.0f}
+        });
     }
-
-  
+    
+    
     /**
      * Test of realizaOperacion method, of class Calculadora.
      */
     @Test
     public void testRealizaOperacion() {
-        System.out.println("realizaOperacion");
-        float n1 = 4.0F;
-        float n2 = 2.0F;
-        String op = "restar";
-        float expResult = 2.0F;
-        float result = Calculadora.realizaOperacion(n1, n2, op);
-       // assertEquals(3, new float[]{10,20},new float[]{10,10});
-        assertEquals(expResult, result,0.0F);
-        // TODO review the generated test code and remove the default call to fail.
+        System.out.println("realizaOperacion" + n1 + n2 + op);
+        // float result = Calculadora.realizaOperacion(n1, n2, op);
+        assertEquals(expResult, calculadora.realizaOperacion(n1, n2, op),0.0);
+
         //fail("The test case is a prototype.");
     }
-
+    
 }

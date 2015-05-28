@@ -4,16 +4,20 @@ public class Calculadora {
 
     static Modelo mod = new Modelo();
 
+    public Calculadora() {
+    }
+
     public static void main(String[] args) {
         Vista.introducir(mod);
-        mod.setResultado(Calculadora.realizaOperacion(mod.getNum1(), mod.getNum2(), mod.getOperacion()));
+        Calculadora cal=new Calculadora();
+        mod.setResultado(cal.realizaOperacion(mod.getNum1(), mod.getNum2(), mod.getOperacion()));
         Vista.imprimir(mod);  
     }
 
-    public static float realizaOperacion(float n1, float n2, String op) {
+    public  Float realizaOperacion(Float n1, Float n2, String op) {
         
         
-        float resul = 10;
+        Float resul = 0.0F;
         if ("sumar".equals(op)) {
             resul = (n1 + n2);
             mod.setResultado(resul);
